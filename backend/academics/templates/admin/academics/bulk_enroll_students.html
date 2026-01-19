@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+
+  <p><b>Selected Students:</b> {{ students|length }}</p>
+
+  <div style="margin: 12px 0; padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
+    <ul style="max-height: 220px; overflow: auto; margin: 0; padding-left: 18px;">
+      {% for s in students %}
+        <li>{{ s.full_name }} ({{ s.admission_no }})</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="_selected_action" value="{{ ids_param }}"/>
+    {{ form.as_p }}
+
+    <button type="submit" class="default">Move Students</button>
+    <a href="../" style="margin-left: 12px;">Cancel</a>
+  </form>
+
+  <p style="margin-top: 16px;">
+    This will <b>end the current active enrollment</b> (if any) and create a new active enrollment in the selected batch.
+  </p>
+{% endblock %}

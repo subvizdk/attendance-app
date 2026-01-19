@@ -1,0 +1,19 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+
+  <p>Upload an .xlsx file with columns:</p>
+  <pre>branch_id | admission_no | full_name | father_full_name | mother_full_name | email | phone | batch_id | start_date</pre>
+
+  <form method="post" enctype="multipart/form-data" style="margin-top: 16px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="default">Upload and Import</button>
+  </form>
+
+  <p style="margin-top: 16px;">
+    Tip: Use <b>branch_id</b> (UUID) to avoid city name duplicates.
+  </p>
+{% endblock %}
