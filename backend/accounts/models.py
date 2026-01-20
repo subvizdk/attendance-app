@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from core.models import Branch
 
+
 class Profile(models.Model):
     ROLE_SUPER_ADMIN = "SUPER_ADMIN"
     ROLE_BRANCH_ADMIN = "BRANCH_ADMIN"

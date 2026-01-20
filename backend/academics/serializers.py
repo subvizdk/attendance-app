@@ -7,7 +7,7 @@ class BatchSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Batch
-        fields = ["id", "branch", "course", "course_name", "year", "label"]
+        fields = ["id", "label", "year", "course", "course_name", "branch"]
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -15,11 +15,11 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Student
         fields = [
             "id",
-            "branch",
             "admission_no",
             "full_name",
             "father_full_name",
             "mother_full_name",
             "email",
             "phone",
+            "branch",
         ]
