@@ -16,7 +16,7 @@ class CreateOrGetSession(APIView):
         if not batch_id or not date:
             return Response({"detail": "batch_id and date required"}, status=400)
 
-        branch = request.user.profile.default_branch
+        branch = request.user.profile.branch
         if not branch:
             return Response({"detail": "User has no default branch"}, status=400)
 
